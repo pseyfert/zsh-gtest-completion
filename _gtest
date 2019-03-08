@@ -35,10 +35,12 @@
 
 _format() {
   local -a formats; formats=("json" "xml")
-  compadd "$@" -S ':' ${formats}
+  compadd "$@" -q -S ':' ${formats}
 }
 
-_gtest_filter() {}
+_gtest_filter() {
+  _message "not implemented"
+}
 _gtest_repeat() {
   _message "number of test repetitions, negative numbers to repeat forever"
 }
