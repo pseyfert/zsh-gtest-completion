@@ -39,7 +39,18 @@ _format() {
 }
 
 _gtest_filter() {
-  _message "not implemented"
+  testlist=(${(f)"$($words[1] --gtest_list_tests)"})
+
+  local current_suite
+  local -a alltests
+  for expr in $testlist; do
+    if [[ $expr =~ '  .*' ]]; then
+      alltests+=(${current_suite}${expr#'  '})
+    else
+      current_suite=$expr
+    fi
+  done
+  _describe -t tests "tests" alltests
 }
 _gtest_repeat() {
   _message "number of test repetitions, negative numbers to repeat forever"
@@ -88,7 +99,7 @@ fi
 _arguments \
   "(- 1)--gtest_list_tests[List the names of all tests instead of running them.]" \
   "(- 1)--help[Print usage message and exit.]" \
-  "--gtest_filter=[Filter tests to run by positive and negative patterns.]:pattern:_gtest_filter" \
+  "--gtest_filter=[Filter tests to run by positive and negative patterns.]:pattern: _gtest_filter" \
   "--gtest_also_run_disabled_tests[Run all disabled tests too.]" \
   "--gtest_repeat=[Run the tests repeatedly; use a negative count to repeat forever.]:number:_gtest_repeat" \
   "--gtest_shuffle[Randomize tests' orders on every iteration.]" \
