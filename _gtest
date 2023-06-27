@@ -99,16 +99,19 @@ fi
 _arguments \
   "(- 1)--gtest_list_tests[List the names of all tests instead of running them.]" \
   "(- 1)--help[Print usage message and exit.]" \
-  "--gtest_filter=[Filter tests to run by positive and negative patterns.]:pattern: _gtest_filter" \
+  "--gtest_filter=-[Filter tests to run by positive and negative patterns.]:pattern: _gtest_filter" \
+  "--gtest_brief=-[Show only failed tests.]: :((0\:disable\ brief\ printout 1\:enable\ brief\ printout))" \
+  "--gtest_fail_fast[Stop testing on first failure.]" \
   "--gtest_also_run_disabled_tests[Run all disabled tests too.]" \
-  "--gtest_repeat=[Run the tests repeatedly; use a negative count to repeat forever.]:number:_gtest_repeat" \
+  "--gtest_recreate_environments_when_repeating[Sets up and tears down test environment on each test.]" \
+  "--gtest_repeat=-[Run the tests repeatedly; use a negative count to repeat forever.]:number:_gtest_repeat" \
   "--gtest_shuffle[Randomize tests' orders on every iteration.]" \
-  "--gtest_random_seed=[Random number seed to use for shuffling test orders]:random seed:_gtest_random_seed" \
-  "--gtest_color=[Enable/disable colored output.]: :_gtest_color" \
-  "--gtest_print_time=[Print elapsed test time]:0 or 1:_gtest_print_time" \
-  "--gtest_output=[Generate a JSON or XML report]:format and location:_gtest_output" \
-  "--gtest_stream_result_to=[Stream test results to the given server.]:streaming destination:__gtest_output" \
-  "--gtest_death_test_style=[Set the default death test style.]:death test style:_gtest_death_test_style" \
+  "--gtest_random_seed=-[Random number seed to use for shuffling test orders]:random seed:_gtest_random_seed" \
+  "--gtest_color=-[Enable/disable colored output.]: :_gtest_color" \
+  "--gtest_print_time=-[Print elapsed test time]:0 or 1:_gtest_print_time" \
+  "--gtest_output=-[Generate a JSON or XML report]:format and location:_gtest_output" \
+  "--gtest_stream_result_to=-[Stream test results to the given server.]:streaming destination:__gtest_output" \
+  "--gtest_death_test_style=-[Set the default death test style.]:death test style:_gtest_death_test_style" \
   "--gtest_break_on_failure[Turn assertion failures into debugger break-points.]" \
   "--gtest_throw_on_failure[Turn assertion failures into C++ exceptions for use by an external test framework.]" \
-  "--gtest_catch_exceptions=[Do not report exceptions as test failures. Instead, allow them to crash the program or throw a pop-up (on Windows).]:disable exception catch:_gtest_catch_exceptions"
+  "--gtest_catch_exceptions=-[Do not report exceptions as test failures. Instead, allow them to crash the program or throw a pop-up (on Windows).]:disable exception catch:_gtest_catch_exceptions"
